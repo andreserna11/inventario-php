@@ -12,7 +12,7 @@ class productoController{
 
     public function nuevo(){
         $prod = new producto();        
-        if(!isset($_REQUEST['id'])){
+        if(isset($_REQUEST['id'])){
             $prod = $this->MODEL->cargarInfo($_REQUEST['id']);
         }
         include_once 'View/save.php';
@@ -20,6 +20,7 @@ class productoController{
 
     public function guardar(){
         $save = new producto();
+        $save->id= $_POST['txtId'];
         $save->nombre_producto = $_POST['txtnombre'];
         $save->referencia = $_POST['txtreferencia'];
         $save->precio = $_POST['txtprecio'];
@@ -27,7 +28,7 @@ class productoController{
         $save->id_categoria = $_POST['cmbCategoria'];
         $save->stock = $_POST['txtstock'];        
 
-        $this->MODEL->registrar($save);
+        $save->id > 0 ? $this->MODEL->update($save) : $this->MODEL->registrar($save);
 
         header("Location: index.php");
     }

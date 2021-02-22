@@ -1,6 +1,7 @@
 <?php
 class producto{
     public $conn;
+    public $id;
     public $nombre_producto;
     public $referencia;
     public $precio;
@@ -46,7 +47,16 @@ class producto{
             $this->conn->prepare($query)->execute(array($data->nombre_producto,$data->referencia,
             $data->precio,$data->peso,$data->id_categoria,$data->stock));
         } catch (Exception $e){
-            echo 'Error';
+            die($e->getMessage());
+        }
+    }
+
+    public function update($data){
+        try{            
+            $query = "UPDATE dbo_producto set nombre_producto = ?, referencia= ?, precio= ?, peso= ?, id_categoria= ?, stock= ?  WHERE id = ?";            
+            $this->conn->prepare($query)->execute(array($data->nombre_producto,$data->referencia,
+            $data->precio,$data->peso,$data->id_categoria,$data->stock,$data->id));
+        } catch (Exception $e){
             die($e->getMessage());
         }
     }

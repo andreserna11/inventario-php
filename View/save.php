@@ -34,7 +34,7 @@
                 Referencia: 
                 </div>
                 <div class=" col m3">
-                    <input type="text" name="txtreferencia">
+                    <input type="text" name="txtreferencia" value="<?php echo $prod->referencia?>">
                 </div>
                 <div class="col m3"></div>
             </div>
@@ -44,7 +44,7 @@
                 Precio: 
                 </div>
                 <div class=" col m3">
-                    <input type="text" name="txtprecio">
+                    <input type="text" name="txtprecio" value="<?php echo $prod->precio?>">
                 </div>
                 <div class="col m3"></div>
             </div>
@@ -54,7 +54,7 @@
                 Peso: 
                 </div>
                 <div class=" col m3">
-                    <input type="text" name="txtpeso">
+                    <input type="text" name="txtpeso" value="<?php echo $prod->peso?>">
                 </div>
                 <div class="col m3"></div>
             </div>
@@ -66,7 +66,7 @@
                 <div class=" col m3">
                     <select name="cmbCategoria" >
                         <?php foreach($this->MODEL->cargarCategoria() as $k) : ?>
-                            <option value="<?php echo $k->id ?>"> <?php echo $k->categoria ?></option>
+                            <option value="<?php echo $k->id ?>" <?php echo $k->id == $prod->id ? 'selected' : ''?>> <?php echo $k->categoria ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -78,7 +78,7 @@
                 Stock: 
                 </div>
                 <div class=" col m3">
-                    <input type="text" name="txtstock">
+                    <input type="text" name="txtstock" value="<?php echo $prod->referencia?>">
                 </div>
                 <div class="col m3"></div>
             </div>
